@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StyleSpec - Choose your UI direction</title>
+  <meta name="description" content="Choose a design direction, fine-tune its decisions, and export a deterministic DESIGN.md for your coding agent.">
+  <meta name="theme-color" content="#f7f7f5">
+  <link rel="canonical" href="https://stylespec.namnth.com/">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./refinements.css">
+  <link rel="stylesheet" href="./v2.css">
+</head>
+<body>
+  <header class="app-header">
+    <a class="brand" href="#builder" aria-label="StyleSpec home">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>StyleSpec</span>
+    </a>
+    <span class="header-note">Local only</span>
+    <a class="pro-discovery-link" href="./pro/" aria-label="Explore the StyleSpec Pro concept">Pro</a>
+    <button class="mobile-preview-toggle" id="mobile-preview-toggle" type="button" hidden>Preview</button>
+  </header>
+
+  <main class="workspace" id="builder">
+    <div class="workspace-shell v2-shell">
+      <div class="tool-intro v2-intro">
+        <h1>Choose a direction. Make it yours.</h1>
+        <p>Pick what you are vibecoding, choose the closest direction, then export a <code>DESIGN.md</code> your coding agent can follow.</p>
+      </div>
+
+      <div class="v2-builder-layout">
+        <div class="control-column v2-control-column">
+          <section class="flow-section" aria-labelledby="domain-title">
+            <div class="flow-heading">
+              <span class="flow-number">01</span>
+              <div><h2 id="domain-title">What are you designing?</h2><p>Start with the kind of experience you need.</p></div>
+            </div>
+            <div class="domain-grid" id="domain-list"></div>
+          </section>
+
+          <section class="flow-section" id="template-step" aria-labelledby="template-title" hidden>
+            <div class="flow-heading">
+              <span class="flow-number">02</span>
+              <div><h2 id="template-title">Choose a design direction</h2><p id="template-note">These directions differ in structure, not only visual style.</p></div>
+            </div>
+            <div class="template-grid" id="template-list"></div>
+          </section>
+
+          <section class="flow-section customize-section" id="customize-step" aria-labelledby="customize-title" hidden>
+            <div class="flow-heading customize-heading">
+              <span class="flow-number">03</span>
+              <div><h2 id="customize-title">Customize</h2><p>Choose the five Essentials, then add only the details that matter.</p></div>
+              <span class="override-count" id="override-count">0 / 5 Essentials selected</span>
+            </div>
+            <div class="customize-list" id="customize-list"></div>
+          </section>
+
+          <section class="export-panel v2-export-panel" id="export-panel" aria-labelledby="export-title" hidden>
+            <div>
+              <span class="export-kicker" id="export-kicker">Template selected</span>
+              <h2 id="export-title">Complete the 5 Essentials to export.</h2>
+              <p id="export-status">Template structure is set. Choose every Essential to unlock your DESIGN.md.</p>
+            </div>
+            <div class="selection-summary" id="selection-summary"></div>
+            <button class="primary-action" id="export-button" type="button">Export DESIGN.md</button>
+          </section>
+        </div>
+
+        <aside class="preview-panel v2-preview-panel" id="preview-panel" aria-label="Live preview">
+          <div class="preview-toolbar">
+            <div class="preview-tabs" role="tablist" aria-label="Preview views">
+              <button type="button" role="tab" aria-selected="true" data-preview-tab="page">Page</button>
+              <button type="button" role="tab" aria-selected="false" data-preview-tab="components">Components</button>
+              <button type="button" role="tab" aria-selected="false" data-preview-tab="states">States</button>
+            </div>
+            <div class="preview-toolbar-actions">
+              <div class="mode-switch" id="preview-mode-switch" hidden aria-label="Preview color mode">
+                <button type="button" data-mode="light" aria-pressed="true">Light</button>
+                <button type="button" data-mode="dark" aria-pressed="false">Dark</button>
+              </div>
+              <button class="preview-close" id="mobile-preview-close" type="button" aria-label="Close preview">×</button>
+            </div>
+          </div>
+
+          <div class="preview-frame" id="preview-root" data-hover="tint" data-motion="gentle" data-icon="outline" data-text="wrap" data-mode="light">
+            <section class="preview-view is-active page-preview-view" data-preview-view="page" role="tabpanel">
+              <div class="preview-empty" id="preview-empty"><span>Choose a template</span><p>Its composition and visual direction will appear here.</p></div>
+              <div id="page-preview"></div>
+            </section>
+
+            <section class="preview-view" data-preview-view="components" role="tabpanel" hidden>
+              <div class="sampler-shell">
+                <div class="sampler-heading"><span>Component sampler</span><h3>The current preview style across everyday UI.</h3></div>
+                <section class="sampler-section">
+                  <h4>Actions</h4>
+                  <div class="sampler-row">
+                    <button class="demo-button demo-button-primary" type="button">Primary</button>
+                    <button class="demo-button demo-button-secondary" type="button">Secondary</button>
+                    <button class="demo-button demo-button-quiet" type="button">Quiet</button>
+                    <button class="demo-icon-button" type="button" aria-label="Favorite">
+                      <svg viewBox="0 0 24 24" aria-hidden="true" class="preview-icon">
+                        <path class="icon-outline" d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/>
+                        <path class="icon-filled" d="m12 2.5 3 6.1 6.7 1-4.9 4.7 1.2 6.7-6-3.2-6 3.2 1.2-6.7-4.9-4.7 6.7-1Z"/>
+                        <path class="icon-duo-secondary" d="m12 2.5 3 6.1 6.7 1-4.9 4.7 1.2 6.7-6-3.2-6 3.2 1.2-6.7-4.9-4.7 6.7-1Z"/>
+                        <path class="icon-duo-primary" d="m12 6.4 1.6 3.3 3.7.5-2.7 2.6.7 3.7-3.3-1.7-3.3 1.7.7-3.7-2.7-2.6 3.7-.5Z"/>
+                      </svg>
+                    </button>
+                  </div>
+                </section>
+                <section class="sampler-section sampler-form-grid">
+                  <div><h4>Form controls</h4><label class="sampler-label">Email<input type="email" value="hello@example.com"></label><label class="sampler-label">Role<select><option>Designer</option><option>Developer</option></select></label></div>
+                  <div><h4>Selection</h4><label class="demo-check"><input type="checkbox" checked><span>Checkbox</span></label><label class="switch-row"><span>Notifications</span><input type="checkbox" checked><i></i></label></div>
+                </section>
+                <section class="sampler-section"><h4>Labels and navigation</h4><div class="sampler-row"><span class="demo-badge">Default</span><span class="demo-badge accent-badge">Active</span><span class="demo-badge">Beta</span></div><div class="demo-tabs"><button class="is-current">Overview</button><button>Activity</button><button>Settings</button></div></section>
+                <section class="sampler-section"><h4>Feedback</h4><div class="demo-alert"><span class="demo-card-icon">i</span><div><strong>Changes saved</strong><p>Your preferences are ready for the next screen.</p></div></div></section>
+              </div>
+            </section>
+
+            <section class="preview-view" data-preview-view="states" role="tabpanel" hidden>
+              <div class="sampler-shell">
+                <div class="sampler-heading"><span>State playground</span><h3>Try the current interaction and text decisions.</h3></div>
+                <section class="sampler-section state-grid">
+                  <div class="state-sample"><span>Hover</span><button class="demo-button demo-button-secondary" type="button">Hover me</button><small>Move a pointer over this control.</small></div>
+                  <div class="state-sample"><span>Focus</span><input type="text" value="Focus me"><small>Tap or tab into this field.</small></div>
+                  <div class="state-sample"><span>Pressed</span><button class="demo-button demo-button-primary state-press-target" type="button">Press and hold</button><small>Feel the active feedback.</small></div>
+                  <div class="state-sample"><span>Disabled</span><button class="demo-button demo-button-secondary" type="button" disabled>Unavailable</button><small>Still readable, clearly inactive.</small></div>
+                </section>
+                <section class="sampler-section text-stress"><h4>Text stress test</h4><h3>A heading with enough words to reveal how wrapping actually feels in a real interface.</h3><p>Longer body copy should remain readable without forcing a single-line layout or hiding meaningful content.</p><code>https://example.com/projects/a-very-long-unbroken-reference-that-must-not-create-horizontal-overflow</code></section>
+                <section class="sampler-section"><h4>Icon weight</h4><div class="icon-sampler">
+                  <span class="demo-card-icon"><svg viewBox="0 0 24 24" aria-hidden="true" class="preview-icon"><path class="icon-outline" d="M4 12h16M12 4v16"/><path class="icon-filled" d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7Z"/><path class="icon-duo-secondary" d="M10 3h4v18h-4z"/><path class="icon-duo-primary" d="M3 10h18v4H3z"/></svg></span>
+                  <span class="demo-card-icon"><svg viewBox="0 0 24 24" aria-hidden="true" class="preview-icon"><path class="icon-outline" d="M5 5h14v14H5zM8 9h8M8 13h5"/><path class="icon-filled" d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm3 5v2h8V9Zm0 4v2h5v-2Z"/><path class="icon-duo-secondary" d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/><path class="icon-duo-primary" d="M8 9h8v2H8zM8 13h5v2H8z"/></svg></span>
+                  <span class="demo-card-icon"><svg viewBox="0 0 24 24" aria-hidden="true" class="preview-icon"><path class="icon-outline" d="M20 10c0 5.8-8 12-8 12S4 15.8 4 10a8 8 0 1 1 16 0Z"/><circle class="icon-outline" cx="12" cy="10" r="2.5"/><path class="icon-filled" d="M12 2a8 8 0 0 0-8 8c0 5.8 8 12 8 12s8-6.2 8-12a8 8 0 0 0-8-8Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/><path class="icon-duo-secondary" d="M12 2a8 8 0 0 0-8 8c0 5.8 8 12 8 12s8-6.2 8-12a8 8 0 0 0-8-8Z"/><path class="icon-duo-primary" d="M12 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg></span>
+                </div></section>
+              </div>
+            </section>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>

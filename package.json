@@ -1,0 +1,10 @@
+{
+  "name": "stylespec",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/data.js && node --check src/design.js && node --check src/preview.js && node --check src/app.js && node --check tool/browser-qa.mjs && node --test"
+  }
+}
