@@ -317,4 +317,4 @@ Export Style
 
 Không dùng AI để regenerate một phiên bản khác với preview.
 
-Đây là hướng Pro sau khi V2 ổn định.
+Đây là hướng mở rộng sau khi V2 ổn định.
