@@ -1,12 +1,12 @@
 # StyleSpec
 
-StyleSpec is a client-side web tool that helps people choose their UI preferences visually and export them as a deterministic DESIGN.md for AI coding agents.
+StyleSpec is an open-source, client-side web tool that helps people choose a UI direction visually and export it as a deterministic `DESIGN.md` for AI coding agents.
 
 > Don't ask AI to guess your taste.
 
-## Current implementation
+## What it does
 
-StyleSpec V2 is a deterministic Template + Composition system. Its flow is:
+StyleSpec uses a deterministic Template + Composition flow:
 
 ~~~text
 Choose domain
@@ -20,24 +20,27 @@ Preview
 Export DESIGN.md
 ~~~
 
+Current scope:
+
 - 6 domains: Tool / Utility, Software / SaaS, Portfolio, Wedding, Game and Blog / Editorial.
-- 18 structurally distinct templates, with Northstar as one Tool template.
+- 18 structurally distinct templates.
 - Template-owned Composition DNA, Visual DNA, Brand Motifs and Section Intent.
-- Relevant customization controls with per-decision reset to template defaults.
-- One Effective Style resolver shared by Page, Components and States previews and the DESIGN.md exporter.
-- Custom accent color support and deterministic preview color calculations.
-- Client-side DESIGN.md generation with no account, backend, AI generation or external API.
-- Responsive desktop and mobile flows that retain each template's composition identity.
+- 5 required Essentials plus optional refinements.
+- Template-specific Page previews plus shared Components and States samplers.
+- Deterministic `DESIGN.md` generation.
+- Custom accent colors and deterministic preview calculations.
+- Responsive desktop and mobile flows.
+- No account, backend, AI generation or external API.
 
 ## Run locally
 
-The product is static and has no runtime dependencies.
+The application is static and has no runtime dependencies.
 
 ~~~bash
 python3 -m http.server 4173
 ~~~
 
-Open http://localhost:4173.
+Open `http://localhost:4173`.
 
 ## Checks
 
@@ -52,7 +55,9 @@ npm run check
 
 ## Deployment
 
-Deploy the repository root as a static site. Production domain: stylespec.namnth.com.
+Production domain: `stylespec.namnth.com`.
+
+Cloudflare Pages can deploy the repository root directly with no build step. See [docs/Deployment.md](docs/Deployment.md).
 
 ## Product docs
 
@@ -60,5 +65,13 @@ Deploy the repository root as a static site. Production domain: stylespec.namnth
 - [docs/StyleSpec.md](docs/StyleSpec.md) - product concept and positioning.
 - [docs/Minimal_UI_Identity.md](docs/Minimal_UI_Identity.md) - Composition Identity + Visual Identity model.
 - [docs/Template_System.md](docs/Template_System.md) - template data, inheritance and export model.
-- [docs/Template_Catalog.md](docs/Template_Catalog.md) - initial design directions.
+- [docs/Template_Catalog.md](docs/Template_Catalog.md) - design directions.
 - [docs/Template_Research_Guideline.md](docs/Template_Research_Guideline.md) - research, divergence and license rules.
+
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+StyleSpec is licensed under the [MIT License](LICENSE).
