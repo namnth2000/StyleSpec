@@ -61,7 +61,7 @@ Use the docs in this order:
 - Components and States can stay shared samplers, but Page preview must be template-specific.
 - Mobile rendering must preserve the template's composition identity rather than collapsing every template into the same generic vertical layout.
 - Logo treatment and section archetypes need schema support, but a full logo editor and section editor are not V2 core.
-- Deterministic HTML/CSS/JS code export is a later Pro direction, not V2 core.
+- Deterministic HTML/CSS/JS code export is outside V2 core.
 
 # Template quality
 
