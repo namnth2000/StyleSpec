@@ -1,0 +1,3 @@
+/pro https://pro.stylespec.namnth.com/ 301
+/pro/ https://pro.stylespec.namnth.com/ 301
+/pro/* https://pro.stylespec.namnth.com/:splat 301
