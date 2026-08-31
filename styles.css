@@ -6,8 +6,13 @@
   --app-text: #181816;
   --app-muted: #74746e;
   --app-border: #deded8;
+  --app-border-strong: #aaa9a2;
   --app-accent: #5146e5;
   --app-accent-soft: #efefff;
+  --font-display: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-label: "IBM Plex Mono", "Cascadia Mono", monospace;
+  --font-wordmark: "Bricolage Grotesque", "Arial Narrow", sans-serif;
   --shell: 1440px;
 }
 
@@ -18,7 +23,7 @@ body {
   min-width: 0;
   background: var(--app-bg);
   color: var(--app-text);
-  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
 }
 button, input, select { font: inherit; }
@@ -31,23 +36,25 @@ h1, h2, h3, h4, p, strong, span, label, button, summary, code { text-wrap: wrap;
   position: sticky;
   top: 0;
   z-index: 30;
-  height: 70px;
+  min-height: 62px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 4px;
   padding: 0 max(24px, calc((100vw - var(--shell)) / 2));
-  background: rgba(247, 247, 245, 0.92);
+  background: var(--app-bg);
   border-bottom: 1px solid var(--app-border);
-  backdrop-filter: blur(16px);
 }
 .brand {
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
-  gap: 11px;
+  gap: 12px;
   text-decoration: none;
-  font-size: 22px;
-  font-weight: 750;
-  letter-spacing: -0.03em;
+  font-family: var(--font-wordmark);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
 }
 .brand-mark {
   width: 36px;
@@ -56,30 +63,49 @@ h1, h2, h3, h4, p, strong, span, label, button, summary, code { text-wrap: wrap;
   align-content: center;
   gap: 4px;
   padding: 8px;
-  border: 1px solid #d2d2cc;
-  border-radius: 10px;
-  background: #fff;
+  border: 1px solid var(--app-border-strong);
+  border-radius: 12px;
+  background: var(--app-surface);
 }
 .brand-mark span { display: block; height: 4px; border-radius: 999px; background: #242421; }
 .brand-mark span:nth-child(1) { width: 20px; }
 .brand-mark span:nth-child(2) { width: 14px; background: var(--app-accent); }
 .brand-mark span:nth-child(3) { width: 9px; }
-.header-note { margin-left: auto; font-size: 13px; color: var(--app-muted); }
-.pro-discovery-link {
-  min-height: 36px;
+.header-note {
+  margin-left: auto;
+  color: var(--app-muted);
+  font-family: var(--font-label);
+  font-size: 11px;
+}
+.product-nav {
   display: inline-flex;
   align-items: center;
-  margin-left: 18px;
-  padding: 0 10px;
-  border: 1px solid var(--app-border);
+  gap: 4px;
+  margin-left: 14px;
+}
+.product-nav-current,
+.pro-discovery-link {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid transparent;
   border-radius: 8px;
   color: var(--app-muted);
   text-decoration: none;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.product-nav-current {
+  border-color: var(--app-border-strong);
+  background: var(--app-surface);
+  color: var(--app-text);
+}
+.pro-discovery-link {
   transition: border-color 150ms ease, color 150ms ease, background-color 150ms ease;
 }
-.pro-discovery-link:hover { border-color: #b9b9b2; background: var(--app-surface); color: var(--app-text); }
+.pro-discovery-link:hover { border-color: var(--app-border); background: var(--app-surface); color: var(--app-text); }
 .pro-discovery-link:focus-visible { outline: 3px solid rgba(81,70,229,.22); outline-offset: 2px; }
 
 .workspace-shell {
@@ -199,8 +225,8 @@ h1, h2, h3, h4, p, strong, span, label, button, summary, code { text-wrap: wrap;
   align-items: center;
   padding: 13px;
   border: 1px solid var(--app-border);
-  border-radius: 14px;
-  background: rgba(255,255,255,0.78);
+  border-radius: 10px;
+  background: var(--app-surface);
   cursor: pointer;
   transition: border-color 120ms ease, background 120ms ease, box-shadow 120ms ease;
 }
@@ -360,14 +386,14 @@ h1, h2, h3, h4, p, strong, span, label, button, summary, code { text-wrap: wrap;
 .primary-action {
   min-height: 46px;
   padding: 0 18px;
-  border: 0;
-  border-radius: 12px;
-  background: var(--app-accent);
+  border: 1px solid var(--app-text);
+  border-radius: 8px;
+  background: var(--app-text);
   color: #fff;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
 }
-.primary-action:hover:not(:disabled) { background: #4338ca; }
+.primary-action:hover:not(:disabled) { background: #30302c; }
 .primary-action:focus-visible { outline: 3px solid rgba(81,70,229,.2); outline-offset: 2px; }
 .primary-action:disabled { opacity: .35; cursor: not-allowed; }
 
@@ -377,10 +403,10 @@ h1, h2, h3, h4, p, strong, span, label, button, summary, code { text-wrap: wrap;
   min-width: 0;
   max-height: calc(100vh - 116px);
   overflow: hidden;
-  border: 1px solid #d8d8d2;
-  border-radius: 18px;
+  border: 1px solid var(--app-border);
+  border-radius: 12px;
   background: #ededeb;
-  box-shadow: 0 16px 40px rgba(31,31,26,.08);
+  box-shadow: 0 12px 30px rgba(31,31,26,.07);
 }
 .preview-toolbar {
   min-height: 58px;
@@ -389,8 +415,8 @@ h1, h2, h3, h4, p, strong, span, label, button, summary, code { text-wrap: wrap;
   justify-content: space-between;
   gap: 12px;
   padding: 9px 12px;
-  border-bottom: 1px solid #d8d8d2;
-  background: rgba(255,255,255,.92);
+  border-bottom: 1px solid var(--app-border);
+  background: var(--app-surface);
 }
 .preview-tabs { display: flex; gap: 3px; }
 .preview-tabs button,
@@ -623,7 +649,7 @@ h1, h2, h3, h4, p, strong, span, label, button, summary, code { text-wrap: wrap;
   .brand { font-size: 20px; }
   .brand-mark { width: 34px; height: 34px; }
   .header-note { display: none; }
-  .pro-discovery-link { margin-left: auto; }
+  .product-nav { margin-left: auto; }
   .workspace-shell { padding: 28px 20px 100px; }
   .builder-layout { display: block; }
   .tool-intro { padding: 2px 0 28px; }
@@ -664,6 +690,13 @@ h1, h2, h3, h4, p, strong, span, label, button, summary, code { text-wrap: wrap;
 }
 
 @media (max-width: 620px) {
+  .app-header { padding-inline: 12px; }
+  .brand { gap: 8px; font-size: 18px; }
+  .brand-mark { width: 32px; height: 32px; padding: 7px; border-radius: 10px; }
+  .brand-mark span:nth-child(1) { width: 17px; }
+  .brand-mark span:nth-child(2) { width: 12px; }
+  .brand-mark span:nth-child(3) { width: 8px; }
+  .product-nav-current, .pro-discovery-link { min-height: 38px; padding-inline: 10px; font-size: 12px; }
   .workspace-shell { padding-inline: 16px; }
   .tool-intro h1 { font-size: 36px; line-height: 1.04; letter-spacing: -0.05em; }
   .group-heading { padding-inline: 0; }
@@ -701,6 +734,7 @@ h1, h2, h3, h4, p, strong, span, label, button, summary, code { text-wrap: wrap;
 }
 
 @media (max-width: 390px) {
+  .product-nav-current { display: none; }
   .choice-grid.choice-count-3 { grid-template-columns: 1fr !important; }
   .accent-grid { margin-left: 0; }
   .decision-card[data-decision="accent"] legend { margin-bottom: 3px; }

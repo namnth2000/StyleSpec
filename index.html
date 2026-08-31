@@ -8,6 +8,7 @@
   <meta name="theme-color" content="#f7f7f5">
   <link rel="canonical" href="https://stylespec.namnth.com/">
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./refinements.css">
   <link rel="stylesheet" href="./v2.css">
@@ -19,13 +20,17 @@
       <span>StyleSpec</span>
     </a>
     <span class="header-note">Local only</span>
-    <a class="pro-discovery-link" href="https://pro.stylespec.namnth.com/" aria-label="Explore StyleSpec Pro">Pro</a>
+    <nav class="product-nav" aria-label="StyleSpec products">
+      <span class="product-nav-current" aria-current="page">Free</span>
+      <a class="pro-discovery-link" href="https://pro.stylespec.namnth.com/" aria-label="Explore StyleSpec Pro">Pro</a>
+    </nav>
     <button class="mobile-preview-toggle" id="mobile-preview-toggle" type="button" hidden>Preview</button>
   </header>
 
   <main class="workspace" id="builder">
     <div class="workspace-shell v2-shell">
       <div class="tool-intro v2-intro">
+        <span class="intro-kicker">StyleSpec Free</span>
         <h1>Choose a direction. Make it yours.</h1>
         <p>Pick what you are vibecoding, choose the closest direction, then export a <code>DESIGN.md</code> your coding agent can follow.</p>
       </div>
