@@ -1,3 +1,4 @@
+import { newArchetypes } from "./archetypes.js";
 const option = (id, label) => ({ id, label });
 const detail = (id, title, options, optionLabels = {}) => ({ id, title, options, optionLabels });
 
@@ -10,7 +11,8 @@ export const domains = [
   { id: "portfolio", name: "Portfolio", shortName: "Portfolio", marker: "↗" },
   { id: "wedding", name: "Wedding", shortName: "Wedding", marker: "♡" },
   { id: "game", name: "Game", shortName: "Game", marker: "◆" },
-  { id: "blog", name: "Blog / Editorial", shortName: "Blog", marker: "¶" }
+  { id: "blog", name: "Blog / Editorial", shortName: "Blog", marker: "¶" },
+  { id: "directory", name: "Directory / Collection", shortName: "Directory", marker: "⌕" }
 ];
 
 export const visualDecisions = [
@@ -65,6 +67,7 @@ const template = ({ id, name, domain, description, composition, previewDefaults,
 });
 
 export const templates = [
+  ...newArchetypes,
   template({
     id: "northstar-soft-utility", name: "Northstar - Soft Utility", domain: "tool", description: "A spacious utility with a friendly marketing lead-in.",
     composition: { navigation: "top", heroStructure: "centered", heroPriority: "copy-first", ctaModel: "primary-secondary", contentRhythm: "stacked", grid: "traditional", informationDensity: "spacious", sectionTransition: "whitespace", pageStructure: "marketing-scroll" },
