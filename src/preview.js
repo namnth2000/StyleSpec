@@ -1,3 +1,4 @@
+import { archetypePages, archetypeThumbs } from "./archetype-previews.js";
 function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -11,6 +12,7 @@ const button = (label, secondary = false) => `<button class="demo-button ${secon
 const imageBlock = (className = "") => `<div class="page-image ${className}" aria-hidden="true"><span></span><i></i></div>`;
 
 const pageRenderers = {
+  ...archetypePages,
   northstar: () => `
     <nav class="page-topbar"><strong>Northstar</strong><span>Today&nbsp;&nbsp; Projects&nbsp;&nbsp; Notes</span><i>NS</i></nav>
     <main class="northstar-main">
@@ -59,6 +61,7 @@ const pageRenderers = {
 };
 
 const thumbnailRenderers = {
+  ...archetypeThumbs,
   northstar: () => `<i class="thumb-nav"></i><b class="thumb-hero"></b><span class="thumb-copy"></span><div class="thumb-cards"><i></i><i></i><i></i></div>`,
   workspace: () => `<aside class="thumb-side"></aside><i class="thumb-toolbar"></i><div class="thumb-columns"><span></span><span></span><span></span></div>`,
   "editorial-tool": () => `<div class="thumb-editorial-copy"><b></b><i></i><i></i></div><div class="thumb-tool-canvas"><span></span></div>`,
